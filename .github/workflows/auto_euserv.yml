@@ -2,7 +2,7 @@ name: Auto EUserv
 
 on:
   schedule:
-    - 35 11 * * Tue  # 每周日 UTC 时间 12:00 运行
+    - cron: '35 11 * * Tue'   # 每周二 11:30 UTC
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@main
       with:
-        python-version: '3.x'  # 指定Python3.x
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
@@ -24,8 +24,8 @@ jobs:
 
     - name: Run script
       env:
-        EUSERV_USERNAME: ${{ leiqin900@gmail.com }}
-        EUSERV_PASSWORD: ${{ Cn70&in12 }}
+        EUSERV_USERNAME: ${{ secrets.EUSERV_USERNAME }}
+        EUSERV_PASSWORD: ${{ secrets.EUSERV_PASSWORD }}
         TRUECAPTCHA_USERID: ${{ secrets.TRUECAPTCHA_USERID }}
         TRUECAPTCHA_APIKEY: ${{ secrets.TRUECAPTCHA_APIKEY }}
         TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
